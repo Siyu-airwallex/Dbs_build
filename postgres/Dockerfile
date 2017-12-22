@@ -1,4 +1,4 @@
-FROM postgres:10.0
+FROM postgres:10.1
 
 # Environment variables
 ENV POSTGRES_USER postgres
@@ -10,6 +10,7 @@ RUN	mkdir /usr/sql
 RUN	chmod a+rx /usr/sql
 
 COPY postgresql.conf /postgresql.conf
+RUN	chmod a+rx /postgresql.conf
 
 #ADD ["sql/initial.sql", "/docker-entrypoint-initdb.d/initial.sql"]
 ADD ["shell/set-config.sh", "/docker-entrypoint-initdb.d/a_set-config.sh"]
